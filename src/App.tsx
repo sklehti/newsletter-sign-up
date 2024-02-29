@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 import Main from "./components/Main";
 import SubcriptionSuccess from "./components/SubcriptionSuccess";
@@ -8,10 +8,10 @@ function App() {
 
   return (
     <div>
-      {subscription ? (
-        <Main setSubscription={setSubscription} />
-      ) : (
+      {!subscription ? (
         <SubcriptionSuccess setSubscription={setSubscription} />
+      ) : (
+        <Main setSubscription={setSubscription} />
       )}
     </div>
   );
