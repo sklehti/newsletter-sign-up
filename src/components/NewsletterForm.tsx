@@ -1,7 +1,7 @@
 /**
- * Note! should i use Formik: https://formik.org/docs/guides/typescript
+ * Note! You can use Formik in future: https://formik.org/docs/guides/typescript
  * or React Hook Form: https://react-hook-form.com/
- * becouse they are written in TypeScript.
+ * because they are written in TypeScript.
  */
 
 import React, { useState } from "react";
@@ -12,27 +12,11 @@ const NewsletterForm = ({ setSubscription }: Subcription) => {
   const [email, setEmail] = useState("");
   const [isValid, setIsvalid] = useState(true);
 
-  //   const validateEmail = (email: string) => {
-  //     const regex =
-  //       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  //     return regex.test(email);
-  //   };
-
-  //   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
-  //     setEmail(e.currentTarget.value);
-  //     setIsvalid(true);
-
-  //     if (validateEmail(email)) {
-  //       // email is valid
-  //       console.log("email is valid");
-  //     } else {
-  //       // email is invalid
-  //       console.log("email is invalid");
-  //     }
-  //   };
-
-  //   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  /**
+   * Check that the email is correctly written
+   * and after that submit the form
+   * @param e
+   */
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
@@ -69,7 +53,6 @@ const NewsletterForm = ({ setSubscription }: Subcription) => {
         className={isValid ? "" : "invalid-input"}
         placeholder="email@company.com"
         value={email}
-        // onChange={handleInput}
         onChange={({ target }) => {
           setEmail(target.value);
           setIsvalid(true);
