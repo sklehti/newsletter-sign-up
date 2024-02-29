@@ -36,7 +36,12 @@ const Main = ({ setSubscription }: Subcription) => {
         </div>
 
         <div>
-          <img className="desktop-img" src={desktopImg} alt="desktop image" />
+          <img
+            className="desktop-img"
+            src={desktopImg}
+            alt="desktop image"
+            onLoad={() => setImgLoaded(true)}
+          />
         </div>
       </div>
     </div>
