@@ -6,10 +6,6 @@ import SubcriptionSuccess from "./components/SubcriptionSuccess";
 function App() {
   const [subscription, setSubscription] = useState(true);
 
-  useEffect(() => {
-    setSubscription(true);
-  }, []);
-
   return (
     <div>
       {subscription ? (

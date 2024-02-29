@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import desktopImg from "../images/illustration-sign-up-desktop.svg";
 import mobileImg from "../images/illustration-sign-up-mobile.svg";
 import NewsletterForm from "./NewsletterForm";
 import { Subcription } from "../types";
 
 const Main = ({ setSubscription }: Subcription) => {
+  const [imgLoaded, setImgLoaded] = useState(false);
+
   return (
-    <div className="container">
+    <div
+      className="container"
+      style={{ visibility: imgLoaded ? "visible" : "hidden" }}
+    >
       <div className="centered-element">
         <div>
-          <img className="mobile-img" src={mobileImg} alt="mobile image" />
+          <img
+            className="mobile-img"
+            src={mobileImg}
+            alt="mobile image"
+            onLoad={() => setImgLoaded(true)}
+          />
 
           <div className="form-info">
             <h1>Stay updated!</h1>
