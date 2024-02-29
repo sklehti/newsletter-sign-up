@@ -42,7 +42,7 @@ const NewsletterForm = ({ setSubscription }: Subcription) => {
       setEmail("");
       setSubscription(false);
 
-      console.log("User data is valid" + result.data.email);
+      console.log("User data is valid " + result.data.email);
     } else {
       setIsvalid(false);
 
@@ -66,7 +66,6 @@ const NewsletterForm = ({ setSubscription }: Subcription) => {
       </div>
 
       <input
-        // type="email"
         className={isValid ? "" : "invalid-input"}
         placeholder="email@company.com"
         value={email}
