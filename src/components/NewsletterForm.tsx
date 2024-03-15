@@ -7,6 +7,8 @@
 import React, { useState } from "react";
 import { User } from "../utils";
 import { Subcription } from "../types";
+import { createEmail } from "../services/newsletterService";
+import { AxiosError } from "axios";
 
 const NewsletterForm = ({ setSubscription }: Subcription) => {
   const [email, setEmail] = useState("");
@@ -17,16 +19,23 @@ const NewsletterForm = ({ setSubscription }: Subcription) => {
    * and after that submit the form
    * @param e
    */
-  const handleSubmit = (e: React.SyntheticEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     const result = User.safeParse({ email: email });
 
     if (result.success) {
-      setEmail("");
-      setSubscription(false);
+      // add email to the database
+      const response = await createEmail(result.data.email);
 
-      console.log("User data is valid " + result.data.email);
+      if (response instanceof AxiosError || response instanceof Error) {
+        alert(response.message);
+      } else {
+        setSubscription(false);
+        setEmail("");
+
+        console.log("User data is valid " + result.data.email);
+      }
     } else {
       setIsvalid(false);
 
